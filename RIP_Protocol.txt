@@ -84,3 +84,79 @@ PC1
 IPv4 Address: 10.2.0.4
 Subnet Mask: 255.255.255.0
 Default Gateway: 10.2.0.2
+
+RIP Protocol Configuration
+==========================
+Router5
+=======
+Router>en
+Router#config ter
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#no auto-summary 
+Router(config-router)#network 10.1.0.0
+Router(config-router)#network 10.2.0.0
+Router(config-router)#network 2.0.0.0
+Router(config-router)#
+
+Router4
+=======
+Router>en
+Router#config ter
+Router(config)#router rip
+RRouter(config-router)#version 2
+Router(config-router)#no auto-summary 
+Router(config-router)#network 2.0.0.0
+Router(config-router)#network 1.0.0.0
+
+Router0
+=======
+Router>en
+Router#config ter
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#no auto-summary 
+Router(config-router)#network 1.0.0.0
+Router(config-router)#network 3.0.0.0
+Router(config-router)#
+
+Router1
+=======
+Router>en
+Router#config ter
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#no auto-summary 
+Router(config-router)#network 3.0.0.0
+Router(config-router)#network 5.0.0.0
+Router(config-router)#network 6.0.0.0
+
+Router2
+=======
+Router>en
+Router#config ter
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#no auto-summary 
+Router(config-router)#network 5.0.0.0
+
+Router3
+=======
+Router>en
+Router#config ter
+Router(config)#router rip
+Router(config-router)#ver
+Router(config-router)#version 2
+Router(config-router)#no auto-summary 
+Router(config-router)#network 6.0.0.0
+
+
+Check RIP Protocol
+==================
+From PC0
+--------- 
+ping 5.0.0.2
+
+Router 5
+--------
+Router#sh ip route
