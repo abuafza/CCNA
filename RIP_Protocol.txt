@@ -1,0 +1,86 @@
+Router 0
+========
+Router>en
+Router#config ter
+Router(config)#int gig0/0
+Router(config-if)#ip address 1.0.0.2 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int gig0/1
+Router(config-if)#ip address 3.0.0.1 255.255.255.0
+Router(config-if)#no shut
+
+Router 1
+========
+Router>en
+Router#config ter
+Router(config)#int gig0/0
+Router(config-if)#ip address 3.0.0.2 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int se0/1/0
+Router(config-if)#ip address 5.0.0.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int se0/1/1
+Router(config-if)#ip address 6.0.0.1 255.255.255.0
+Router(config-if)#no shut
+
+
+Router 2
+========
+Router>en
+Router#config ter
+Router(config)#int se0/1/0
+Router(config-if)#ip address 5.0.0.2 255.255.255.0
+Router(config-if)#no shut
+
+Router 3
+========
+Router>en
+Router#config ter
+Router(config)#int se0/1/1
+Router(config-if)#ip add 6.0.0.2 255.255.255.0
+Router(config-if)#no shut
+
+
+Router 4
+========
+Router>en
+Router#config ter
+Router(config)#int se0/1/0
+Router(config-if)#ip address 2.0.0.2 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int gig0/0
+Router(config-if)#ip address 1.0.0.1 255.255.255.0
+Router(config-if)#no shut
+
+Router 5
+========
+Router>en
+Router#config ter
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#int gig0/0
+Router(config-if)#ip address 10.1.0.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int gig0/1
+Router(config-if)#ip address 10.2.0.2 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int se0/1/0
+Router(config-if)#ip address 2.0.0.1 255.255.255.0
+Router(config-if)#no shut
+
+PC0
+===
+IPv4 Address: 10.1.0.3
+Subnet Mask: 255.255.255.0
+Default Gateway: 10.1.0.1
+
+PC1
+===
+IPv4 Address: 10.2.0.4
+Subnet Mask: 255.255.255.0
+Default Gateway: 10.2.0.2
