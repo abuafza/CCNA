@@ -63,3 +63,30 @@ OSPF Routing Protocol
 ===================== 
 R1
 ==
+Router>en
+Router#config ter
+Router(config)#router ospf 1
+Router(config-router)#network 172.16.1.0 0.0.0.255 area 0
+Router(config-router)#network 172.16.4.0 0.0.0.255 area 0
+Router(config-router)#network 172.16.5.0 0.0.0.255 area 0
+
+R2
+==
+Router>en
+Router#config ter
+Router(config)#router ospf 1
+Router(config-router)#network 172.16.2.0 0.0.0.255 area 0
+Router(config-router)#network 172.16.4.0 0.0.0.255 area 0
+
+R3
+==
+Router>en
+Router#config ter
+Router(config)#router ospf 1
+Router(config-router)#network 172.16.3.0 0.0.0.255 area 0
+Router(config-router)#network 172.16.5.0 0.0.0.255 area 0
+
+
+PCA to PCB (working)
+====================
+ping 172.16.2.9
