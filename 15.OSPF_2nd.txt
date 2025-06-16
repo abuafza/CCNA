@@ -1,0 +1,65 @@
+R1
+==
+Router>en
+Router#config ter
+Router(config)#int gig0/0
+Router(config-if)#ip address 172.16.1.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int se0/1/0
+Router(config-if)#ip address 172.16.4.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int se0/1/1
+Router(config-if)#ip address 172.16.5.1 255.255.255.0
+Router(config-if)#no shut
+
+R2
+==
+Router>en
+Router#config ter
+Router(config)#int gig0/0
+Router(config-if)#ip address 172.16.2.2 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int se0/1/0
+Router(config-if)#ip address 172.16.4.2 255.255.255.0
+Router(config-if)#no shut
+
+R3
+==
+Router>en
+Router#config ter
+Router(config)#int gig0/0
+Router(config-if)#ip address 172.16.3.3 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int se0/1/1
+Router(config-if)#ip address 172.16.5.3 255.255.255.0
+Router(config-if)#no shut
+
+A
+==
+Ipv4 Address: 172.16.1.9
+Subnet Mask: 255.255.255.0
+Default Gateway: 172.16.1.1
+B
+==
+Ipv4 Address: 172.16.2.9
+Subnet Mask: 255.255.255.0
+Default Gateway: 172.16.2.2
+
+C
+==
+Ipv4 Address: 172.16.3.9
+Subnet Mask: 255.255.255.0
+Default Gateway: 172.16.3.3
+
+PCA to PCB (Not working)
+========================
+ping 172.16.2.9
+
+OSPF Routing Protocol
+===================== 
+R1
+==
