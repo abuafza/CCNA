@@ -1,0 +1,42 @@
+Router 0
+========
+Router>en
+Router#config ter
+Router(config)#int gig0/1
+Router(config-if)#ip address 192.168.1.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int gig0/0
+Router(config-if)#ip address 192.168.3.1 255.255.255.252
+Router(config-if)#no shut
+
+
+Router 1
+========
+Router>en
+Router#config ter
+Router(config)#int gig0/0
+Router(config-if)#ip address 192.168.3.2 255.255.255.252
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#int gig0/1
+Router(config-if)#ip address 192.168.2.1 255.255.255.0
+Router(config-if)#no shut
+
+PC0
+===
+IPv4 Address: 192.168.1.10
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
+
+PC1
+===
+IPv4 Address: 192.168.1.20
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
+
+PC2
+===
+IPv4 Address: 192.168.2.14
+Subnet Mask: 255.255.255.252
+Default Gateway: 192.168.2.1
