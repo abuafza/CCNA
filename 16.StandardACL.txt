@@ -38,5 +38,63 @@ Default Gateway: 192.168.1.1
 PC2
 ===
 IPv4 Address: 192.168.2.14
-Subnet Mask: 255.255.255.252
+Subnet Mask: 255.255.255.0
 Default Gateway: 192.168.2.1
+
+Ping 
+====
+PC0 to PC1 (Pinging)
+ping 192.168.1.20
+
+PC0 to PC2 (Not Pinging)
+ping 192.168.2.40
+
+IP Routing
+===========
+Router 0
+========
+Router>en
+Router#config ter
+Router(config)#ip route 0.0.0.0 0.0.0.0 192.168.3.2
+
+Router 1
+========
+Router>en
+Router#confi ter
+Router(config)#ip route 0.0.0.0 0.0.0.0 192.168.3.1
+
+Ping 
+====
+PC0 to PC1 (Pinging)
+ping 192.168.1.20
+
+PC0 to PC2 (Pinging)
+ping 192.168.2.40
+
+Standard Access List configuration
+==================================
+Router 1
+========
+Router(config)#access-list 1 deny 192.168.1.20 0.0.0.0 
+Router(config)#access-list 1 permit any 
+Router(config)#do show ac
+Router(config)#int gig0/1
+Router(config-if)#ip access-group 1 out 
+
+
+Ping 
+====
+PC0 to PC1 (Pinging)
+ping 192.168.1.20
+
+PC0 to PC2 (Pinging)
+ping 192.168.2.40
+
+PC1 to PC2 (Not Pinging)
+ping 192.168.2.40
+
+PC2 to PC0 (Pinging)
+ping 192.168.1.10
+
+PC2 to PC1 (Not Pinging)
+ping 192.168.1.20
