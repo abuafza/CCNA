@@ -1,0 +1,55 @@
+PC0
+===
+IPv4 Address: 10.0.0.2
+Subnet Mask: 255.0.0.0
+Default Gateway: 10.0.0.1
+
+PC1
+===
+IPv4 Address: 10.0.0.3
+Subnet Mask: 255.0.0.0
+Default Gateway: 10.0.0.1
+
+PC2
+===
+IPv4 Address: 172.19.0.2
+Subnet Mask: 255.255.0.0
+Default Gateway: 172.19.0.1
+
+PC3
+===
+IPv4 Address: 172.19.0.3
+Subnet Mask: 255.255.0.0
+Default Gateway: 172.19.0.1
+
+Server
+======
+IPv4 Address: 172.19.0.4
+Subnet Mask: 255.255.0.0
+Default Gateway: 172.19.0.1
+
+R1
+==
+Router>en
+Router#config ter
+Router(config)#hostname R1
+R1(config)#int gig0/0/1
+R1(config-if)#ip address 10.0.0.1 255.0.0.0
+R1(config-if)#no shut
+R1(config-if)#exit
+R1(config)#int gig0/0/0
+R1(config-if)#ip address 192.168.10.1 255.255.255.0
+R1(config-if)#no shut
+
+R2
+==
+Router>en
+Router#config ter
+Router(config)#hostname R2
+R2(config)#int gig0/0/1
+R2(config-if)#ip address 172.19.0.1 255.255.0.0
+R2(config-if)#no shut
+R2(config-if)#exit
+R2(config)#int gig0/0/0
+R2(config-if)#ip address 192.168.10.2 255.255.255.0
+R2(config-if)#no shut
