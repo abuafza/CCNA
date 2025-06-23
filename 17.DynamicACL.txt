@@ -53,3 +53,48 @@ R2(config-if)#exit
 R2(config)#int gig0/0/0
 R2(config-if)#ip address 192.168.10.2 255.255.255.0
 R2(config-if)#no shut
+
+Routing configuration
+=====================
+R1
+==
+R1#config ter
+R1(config)#ip route 0.0.0.0 0.0.0.0 192.168.10.2
+
+R2
+==
+R2#config ter
+R2(config)#ip route 0.0.0.0 0.0.0.0 192.168.10.1
+
+PC0 to Server
+=============
+ping 172.19.0.4 (Pinging)
+and can browsing
+
+PC1 to Server
+=============
+ping 172.19.0.4 (Pinging)
+and can browsing
+
+Dynamic ACL
+===========
+R1
+==
+R1(config)#access-list 125 deny tcp host 10.0.0.2 host 172.19.0.4 eq 80
+R1(config)#access-list 125 permit ip any any
+R1(config)#int gig0/0/1
+R1(config-if)#ip access-group 125 in
+
+
+Ping 
+====
+
+PC0 to Server
+=============
+ping 172.19.0.4 (Pinging)
+and can not browse
+
+PC1 to Server
+=============
+ping 172.19.0.4 (Pinging)
+and can browsing
